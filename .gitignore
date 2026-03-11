@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+*.env.local
+frontend/.angular/
+frontend/dist/
+backend/dist/
+*.js.map
+.DS_Store
