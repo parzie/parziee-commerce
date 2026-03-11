@@ -1,0 +1,65 @@
+@use '@angular/material' as mat;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap');
+
+$parzie-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$orange-palette,
+  ),
+  typography: (
+    brand-family: 'DM Serif Display, serif',
+    plain-family: 'DM Sans, sans-serif',
+  ),
+  density: (scale: 0),
+));
+
+html {
+  @include mat.core();
+  @include mat.all-component-themes($parzie-theme);
+}
+
+// ─── Design tokens ────────────────────────────────────────────────────────────
+:root {
+  --parzie-surface: #faf9f7;
+  --parzie-surface-alt: #f2ede6;
+  --parzie-ink: #1a1714;
+  --parzie-accent: #c0622b;
+  --parzie-accent-light: #e8d5c4;
+  --parzie-border: #e8e4de;
+  --parzie-muted: #7a7168;
+  --parzie-radius: 4px;
+  --parzie-radius-lg: 8px;
+}
+
+// ─── Base ─────────────────────────────────────────────────────────────────────
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--parzie-surface);
+  color: var(--parzie-ink);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ─── Utilities ────────────────────────────────────────────────────────────────
+.parzie-display {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+}
+
+.parzie-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 600px) {
+  .parzie-container {
+    padding: 0 1rem;
+  }
+}
