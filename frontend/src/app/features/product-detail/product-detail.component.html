@@ -1,0 +1,75 @@
+@if (loading()) {
+  <div class="loading-state">
+    <mat-spinner diameter="28" />
+  </div>
+} @else if (notFound() || !product()) {
+  <div class="not-found parzie-container">
+    <p class="parzie-display not-found-title">Item not found.</p>
+    <a class="back-link" routerLink="/">← Back to shop</a>
+  </div>
+} @else {
+  <article class="detail parzie-container">
+
+    <!-- ─── Back link ─────────────────────────────────────────────────────── -->
+    <a class="back-link" routerLink="/">← Back to shop</a>
+
+    <div class="detail-layout">
+
+      <!-- ─── Images ──────────────────────────────────────────────────────── -->
+      <div class="detail-images">
+        <div class="main-image-wrap">
+          <img
+            class="main-image"
+            [src]="product()!.images[selectedImage()]"
+            [alt]="product()!.title"
+          />
+          <span class="condition-badge">{{ product()!.condition }}</span>
+        </div>
+
+        @if (product()!.images.length > 1) {
+          <div class="thumbnails">
+            @for (img of product()!.images; track img; let i = $index) {
+              <button
+                class="thumb"
+                [class.active]="selectedImage() === i"
+                (click)="selectImage(i)"
+                type="button"
+              >
+                <img [src]="img" [alt]="product()!.title + ' image ' + (i + 1)" />
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- ─── Info ─────────────────────────────────────────────────────────── -->
+      <div class="detail-info">
+        <span class="info-category">{{ product()!.category }}</span>
+
+        <h1 class="info-title parzie-display">{{ product()!.title }}</h1>
+
+        <p class="info-price">{{ formatPrice(product()!.price) | currency }}</p>
+
+        <p class="info-description">{{ product()!.description }}</p>
+
+        <div class="info-meta">
+          <span class="meta-item">
+            <span class="meta-label">Condition</span>
+            <span class="meta-value">{{ product()!.condition }}</span>
+          </span>
+        </div>
+
+        <div class="info-actions">
+          @if (product()!.sold) {
+            <div class="sold-badge">Sold</div>
+          } @else {
+            <button mat-flat-button class="cta-btn" type="button">
+              Contact Seller
+            </button>
+          }
+        </div>
+      </div>
+
+    </div>
+  </article>
+}
