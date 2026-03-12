@@ -11,7 +11,7 @@ import type {
 @Injectable({ providedIn: 'root' })
 export class ProductService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'http://localhost:3001/api';
 
   getProducts(filters: ProductFilters = {}): Observable<PaginatedResponse<Product>> {
     let params = new HttpParams();
