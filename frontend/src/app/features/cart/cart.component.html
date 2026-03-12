@@ -1,0 +1,95 @@
+<section class="cart-page">
+  <div class="parzie-container">
+
+    <header class="cart-header">
+      <h1 class="cart-title parzie-display">Your bag.</h1>
+      @if (items().length > 0) {
+        <span class="cart-count">{{ items().length }} item{{ items().length !== 1 ? 's' : '' }}</span>
+      }
+    </header>
+
+    @if (items().length === 0) {
+
+      <div class="empty-state">
+        <p class="empty-heading parzie-display">Your cart is empty.</p>
+        <p class="empty-sub">Looks like you haven't added anything yet.</p>
+        <a mat-flat-button class="shop-btn" routerLink="/">Continue Shopping</a>
+      </div>
+
+    } @else {
+
+      <div class="cart-layout">
+
+        <!-- ─── Item list ──────────────────────────────────────────────────── -->
+        <div class="cart-items">
+          <div class="items-heading-row">
+            <span>Item</span>
+            <span>Qty</span>
+            <span class="align-right">Total</span>
+          </div>
+
+          @for (entry of items(); track entry.product.id) {
+            <div class="cart-row">
+
+              <div class="row-product">
+                <img
+                  class="row-thumb"
+                  [src]="entry.product.images[0]"
+                  [alt]="entry.product.title"
+                />
+                <div class="row-info">
+                  <span class="row-category">{{ entry.product.category }}</span>
+                  <p class="row-title">{{ entry.product.title }}</p>
+                  <p class="row-price">{{ formatPrice(entry.product.price) | currency }}</p>
+                </div>
+              </div>
+
+              <div class="row-qty">
+                <button class="qty-btn" type="button" (click)="updateQty(entry.product.id, -1)" aria-label="Decrease quantity">−</button>
+                <span class="qty-value">{{ entry.quantity }}</span>
+                <button class="qty-btn" type="button" (click)="updateQty(entry.product.id, 1)" aria-label="Increase quantity">+</button>
+              </div>
+
+              <div class="row-subtotal">
+                <span class="row-line-total">{{ formatPrice(entry.product.price * entry.quantity) | currency }}</span>
+                <button class="remove-btn" type="button" (click)="remove(entry.product.id)" aria-label="Remove item">
+                  <mat-icon>delete_outline</mat-icon>
+                </button>
+              </div>
+
+            </div>
+          }
+
+          <div class="cart-footer-row">
+            <a class="back-link" routerLink="/">← Continue Shopping</a>
+          </div>
+        </div>
+
+        <!-- ─── Order summary ─────────────────────────────────────────────── -->
+        <aside class="order-summary">
+          <h2 class="summary-title parzie-display">Order Summary</h2>
+
+          <div class="summary-row">
+            <span class="summary-label">Subtotal</span>
+            <span class="summary-value">{{ formatPrice(subtotal()) | currency }}</span>
+          </div>
+
+          <div class="summary-divider"></div>
+
+          <div class="summary-row summary-total">
+            <span class="summary-label">Total</span>
+            <span class="summary-value total-amount">{{ formatPrice(subtotal()) | currency }}</span>
+          </div>
+
+          <button mat-flat-button class="checkout-btn" disabled type="button">
+            Proceed to Checkout
+          </button>
+          <p class="checkout-note">Checkout coming soon</p>
+        </aside>
+
+      </div>
+
+    }
+
+  </div>
+</section>

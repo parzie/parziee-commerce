@@ -4,5 +4,8 @@
     <nav class="navbar-nav">
       <a class="nav-link" routerLink="/">Shop</a>
     </nav>
+    <a class="cart-link" routerLink="/cart" aria-label="View cart">
+      <mat-icon [matBadge]="cartCount() || null" matBadgeColor="warn">shopping_bag</mat-icon>
+    </a>
   </div>
 </header>

@@ -30,6 +30,19 @@
   gap: 2rem;
 }
 
+.cart-link {
+  display: flex;
+  align-items: center;
+  color: var(--parzie-ink);
+  margin-left: 1.25rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--parzie-accent);
+  }
+}
+
 .nav-link {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.875rem;

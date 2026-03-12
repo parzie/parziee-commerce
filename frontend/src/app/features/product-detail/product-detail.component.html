@@ -63,8 +63,8 @@
           @if (product()!.sold) {
             <div class="sold-badge">Sold</div>
           } @else {
-            <button mat-flat-button class="cta-btn" type="button">
-              Contact Seller
+            <button mat-flat-button class="cta-btn" type="button" (click)="addToCart()" [disabled]="added()">
+              {{ added() ? 'Added!' : 'Add to Cart' }}
             </button>
           }
         </div>

@@ -1,0 +1,349 @@
+.cart-page {
+  padding: 3rem 0 6rem;
+  min-height: 60vh;
+}
+
+// ─── Header ────────────────────────────────────────────────────────────────
+
+.cart-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.cart-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0;
+  color: var(--parzie-ink);
+}
+
+.cart-count {
+  font-size: 0.875rem;
+  color: var(--parzie-muted);
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+// ─── Empty state ───────────────────────────────────────────────────────────
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 0 7rem;
+  gap: 1rem;
+}
+
+.empty-heading {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-style: italic;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--parzie-ink);
+}
+
+.empty-sub {
+  color: var(--parzie-muted);
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.shop-btn {
+  background-color: var(--parzie-accent) !important;
+  color: #fff !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0 2rem;
+  height: 44px;
+  text-decoration: none;
+}
+
+// ─── Layout ────────────────────────────────────────────────────────────────
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
+  align-items: start;
+
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+// ─── Items list ────────────────────────────────────────────────────────────
+
+.cart-items {
+  border-top: 2px solid var(--parzie-ink);
+}
+
+.items-heading-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--parzie-muted);
+  border-bottom: 1px solid var(--parzie-border);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.align-right {
+  text-align: right;
+  min-width: 80px;
+}
+
+.cart-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--parzie-border);
+}
+
+// Product cell
+
+.row-product {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.row-thumb {
+  width: 72px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  background-color: var(--parzie-border);
+}
+
+.row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.row-category {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--parzie-muted);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.row-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--parzie-ink);
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.3;
+
+  // truncate long titles
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.row-price {
+  font-size: 0.875rem;
+  color: var(--parzie-accent);
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+// Qty cell
+
+.row-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--parzie-border);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--parzie-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    border-color: var(--parzie-accent);
+    color: var(--parzie-accent);
+  }
+}
+
+.qty-value {
+  font-size: 0.9375rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  min-width: 1.5rem;
+  text-align: center;
+  color: var(--parzie-ink);
+}
+
+// Subtotal + remove cell
+
+.row-subtotal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  min-width: 80px;
+}
+
+.row-line-total {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--parzie-ink);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--parzie-muted);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+
+  mat-icon {
+    font-size: 1.1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  &:hover {
+    color: var(--parzie-accent);
+  }
+}
+
+.cart-footer-row {
+  padding: 1.25rem 0 0;
+}
+
+.back-link {
+  font-size: 0.875rem;
+  color: var(--parzie-muted);
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--parzie-ink);
+  }
+}
+
+// ─── Order summary ─────────────────────────────────────────────────────────
+
+.order-summary {
+  position: sticky;
+  top: 84px;
+  background: #f3f0eb;
+  border: 1px solid var(--parzie-border);
+  border-radius: 2px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (max-width: 720px) {
+    position: static;
+  }
+}
+
+.summary-title {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+  color: var(--parzie-ink);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--parzie-ink);
+}
+
+.summary-label {
+  color: var(--parzie-muted);
+}
+
+.summary-value {
+  font-weight: 500;
+}
+
+.summary-divider {
+  height: 1px;
+  background: var(--parzie-border);
+}
+
+.summary-total {
+  font-size: 1rem;
+
+  .summary-label {
+    color: var(--parzie-ink);
+    font-weight: 600;
+  }
+}
+
+.total-amount {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--parzie-ink);
+}
+
+.checkout-btn {
+  width: 100%;
+  height: 48px;
+  background-color: var(--parzie-accent) !important;
+  color: #fff !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+
+  &:disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed;
+  }
+}
+
+.checkout-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--parzie-muted);
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
